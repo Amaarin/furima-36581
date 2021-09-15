@@ -17,7 +17,10 @@ class Item < ApplicationRecord
 
 
   belongs_to :user
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :shipping_cost
   has_one_attached :image
+ 
   
   def was_attached?
     self.image.attached?
