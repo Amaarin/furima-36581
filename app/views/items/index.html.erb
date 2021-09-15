@@ -119,41 +119,40 @@
     </ul>
   </div>
   <%# /FURIMAの特徴 %>
-
-  <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
       新規投稿商品
     </div>
     <ul class='item-lists'>
-      <% @items.each do |item| %>
-       <li class='list'>
-         <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
+      <% if @item.present? %>
+        <% @items.each do |item| %>
+          <li class='list'>
+            <div class='item-img-content'>
+              <%= image_tag "item-sample.png", class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
+              <%# 商品が売れていればsold outを表示しましょう %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+              <%# //商品が売れていればsold outを表示しましょう %>
 
-         </div>
-         <div class='item-info'>
-          <h3 class='item-name'>
-            <%= "#{item.item_name}" %>
-          </h3>
-          <div class='item-price'>
-            <span><%= "#{item.price}" %>円<br><%= "#{item.shipping_cost.name}" %></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
             </div>
-          </div>
-         </div>
-        </li>
-      <% end %>
-      <% if @items==nil %>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= "#{item.item_name}" %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= "#{item.price}" %>円<br><%= "#{item.shipping_cost.name}" %></span>
+                <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+               </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% else %>
         <li class='list'>
          <%= link_to '#' do %>
           <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -174,7 +173,6 @@
       <% end %>
     </ul>
   </div>
-  <%# /商品一覧 %>
 </div>
 <% if user_signed_in? %>
   <%= link_to(new_item_path, class: 'purchase-btn') do %>
