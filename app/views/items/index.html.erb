@@ -83,7 +83,6 @@
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
 
-  <%# FURIMAの特徴 %>
   <div class='feature-contents'>
     <h2 class='title'>
       FURIMAの特徴
@@ -118,7 +117,6 @@
       </li>
     </ul>
   </div>
-  <%# /FURIMAの特徴 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
@@ -130,13 +128,11 @@
           <li class='list'>
             <div class='item-img-content'>
               <%= link_to image_tag(item.image, class: "item-img"), item_path(item) %>
-
-              <%# 商品が売れていればsold outを表示しましょう %>
+            <% if item.buy.present?%>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
-              <%# //商品が売れていればsold outを表示しましょう %>
-
+            <% end %>
             </div>
               <div class='item-info'>
                 <h3 class='item-name'>
