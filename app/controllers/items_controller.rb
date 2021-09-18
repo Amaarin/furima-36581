@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def redirect_root
-    redirect_to action: :index if current_user.id == @item.user_id && @item.buy.present?
+    redirect_to action: :index if current_user.id == @item.user_id || @item.buy.present?
   end
 
 end
