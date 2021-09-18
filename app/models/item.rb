@@ -14,23 +14,18 @@ class Item < ApplicationRecord
       validates :price
     end
   end
-
-
   belongs_to :user
   has_one_attached :image
-  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :prefecture
   belongs_to :scheduled_day
   belongs_to :shipping_cost
   belongs_to :status
- 
-  
   def was_attached?
     self.image.attached?
   end
-  # has_one :buy
+  has_one :buy
 
 end
 
