@@ -43,8 +43,8 @@ RSpec.describe BuyShippingAddress, type: :model do
         @buy_shipping_address.valid?
         expect(@buy_shipping_address.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it 'prefectureが0だと保存できない' do
-        @buy_shipping_address.prefecture_id = 0
+      it 'prefecture_idが1だと保存できない' do
+        @buy_shipping_address.prefecture_id = 1
         @buy_shipping_address.valid?
         expect(@buy_shipping_address.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -97,6 +97,16 @@ RSpec.describe BuyShippingAddress, type: :model do
         @buy_shipping_address.token = nil
         @buy_shipping_address.valid?
         expect(@buy_shipping_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空だと購入できない' do
+        @buy_shipping_address.user_id = ''
+        @buy_shipping_address.valid?
+        expect(@buy_shipping_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空だと購入できない' do
+        @buy_shipping_address.item_id = ''
+        @buy_shipping_address.valid?
+        expect(@buy_shipping_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

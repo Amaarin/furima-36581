@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :set_buy
-  before_action :redirect_root
+  before_action :move_to_index
 
 
   def index
@@ -40,7 +40,7 @@ class BuysController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def redirect_root
+  def move_to_index
     redirect_to root_path if current_user == @item.user || @item.buy.present?
   end
 end
