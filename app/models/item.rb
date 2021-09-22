@@ -10,7 +10,7 @@ class Item < ApplicationRecord
       validates :prefecture_id
       validates :scheduled_day_id
     end
-    with_options numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 99999999 } do
+    with_options numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 } do
       validates :price
     end
   end
